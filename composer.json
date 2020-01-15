@@ -1,5 +1,5 @@
 {
-    "name": "martynweeler/oauth2-komoot",
+    "name": "martynwheeler/oauth2-komoot",
     "description": "Komoot OAuth2-Server Client Provider for The PHP League OAuth2-Client",
     "keywords": [
         "oauth",
