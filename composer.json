@@ -1,0 +1,35 @@
+{
+    "name": "martynweeler/oauth2-komoot",
+    "description": "Komoot OAuth2-Server Client Provider for The PHP League OAuth2-Client",
+    "keywords": [
+        "oauth",
+        "oauth2",
+        "authorization",
+        "authentication",
+        "idp",
+        "identity",
+        "sso",
+        "single sign on",
+        "komoot"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martyn Wheeler"
+        }
+    ],
+    "require": {
+        "league/oauth2-client": "^2.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "MartynWheeler\\OAuth2\\Client\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+        }
+    }
+}
