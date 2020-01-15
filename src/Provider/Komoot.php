@@ -1,6 +1,6 @@
 <?php
 
-namespace ChrisHemmings\OAuth2\Client\Provider;
+namespace MartynWheeler\OAuth2\Client\Provider;
 
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
@@ -9,49 +9,40 @@ use League\OAuth2\Client\Token\AccessToken;
 use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
 use Psr\Http\Message\ResponseInterface;
 
-class Drupal extends AbstractProvider
+class Komoot extends AbstractProvider
 {
     use BearerAuthorizationTrait;
-
-    protected $baseUrl;
-
-    public function getBaseUrl()
-    {
-        return $this->baseUrl;
-    }
-
     /**
-     * Get provider url to run authorization
+     * Get authorization url to begin OAuth flow
      *
      * @return string
      */
     public function getBaseAuthorizationUrl()
     {
-        return $this->getBaseUrl() . '/oauth2/authorize';
+        return 'https://auth.komoot.de/oauth/authorize';
     }
-
     /**
-     * Returns the base URL for requesting an access token.
+     * Get access token url to retrieve token
      *
      * @param array $params
+     *
      * @return string
      */
     public function getBaseAccessTokenUrl(array $params)
     {
-        return $this->getBaseUrl() . '/oauth2/token';
+        return 'https://auth.komoot.de/oauth/token';
     }
-
     /**
      * Get provider url to fetch user details
      *
      * @param AccessToken $token
+     *
      * @return string
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        return $this->getBaseUrl() . '/oauth2/UserInfo';
+        return 'https://external-api.komoot.de/v007/users?' . http_build_query(['access_token' => $token->getToken()]);
     }
-
     /**
      * Get the default scopes used by this provider.
      *
@@ -59,20 +50,8 @@ class Drupal extends AbstractProvider
      */
     protected function getDefaultScopes()
     {
-        return ['openid', 'email', 'profile'];
+        return [];
     }
-
-    /**
-     * Returns the string that should be used to separate scopes when building
-     * the URL for requesting an access token.
-     *
-     * @return string Scope separator, defaults to ' '
-     */
-    protected function getScopeSeparator()
-    {
-        return ' ';
-    }
-
     /**
      * Check a provider response for errors.
      *
@@ -91,7 +70,6 @@ class Drupal extends AbstractProvider
             );
         }
     }
-
     /**
      * Generate a user object from a successful user details request.
      *
@@ -102,6 +80,6 @@ class Drupal extends AbstractProvider
      */
     protected function createResourceOwner(array $response, AccessToken $token)
     {
-        return new DrupalResourceOwner($response);
+        return new KomootResourceOwner($response);
     }
 }
