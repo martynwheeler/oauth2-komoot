@@ -24,13 +24,13 @@ class KomootResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner id
+     * Get resource owner username
      *
      * @return string|null
      */
     public function getId()
     {
-        return $this->response['sub'] ?: null;
+        return $this->getValueByKey($this->response, 'username');
     }
 
 }
