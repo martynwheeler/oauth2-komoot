@@ -54,7 +54,7 @@ class Komoot extends AbstractProvider
      */
     protected function getDefaultScopes()
     {
-        return [];
+        return ['profile'];
     }
     /**
      * Check a provider response for errors.
