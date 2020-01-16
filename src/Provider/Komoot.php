@@ -41,7 +41,10 @@ class Komoot extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        return 'https://external-api.komoot.de/v007/users?' . http_build_query(['access_token' => $token->getToken()]);
+        //Need to extract username from token
+        var_dump($token);
+        exit();
+        return 'https://external-api.komoot.de/v007/users/$USERNAME/tours/;
     }
     /**
      * Get the default scopes used by this provider.
