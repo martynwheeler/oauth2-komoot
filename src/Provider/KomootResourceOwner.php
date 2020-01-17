@@ -1,15 +1,12 @@
 <?php
-
 namespace MartynWheeler\OAuth2\Client\Provider;
-
-use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
 class KomootResourceOwner implements ResourceOwnerInterface
 {
     /**
-     * Raw response
+     * Raw response.
      *
-     * @var
+     * @var array
      */
     protected $response;
 
@@ -24,13 +21,32 @@ class KomootResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner username
+     * Returns the identifier of the authorized resource owner.
      *
-     * @return string|null
+     * @return int|null
      */
     public function getId()
     {
-        return $this->getValueByKey($this->response, 'username');
+        return $this->response['id'] ?: null;
     }
 
+    /**
+     * Returns resource owner first name.
+     *
+     * @return string|null
+     */
+    public function getUserName()
+    {
+        return $this->response['username'] ?: null;
+    }
+
+    /**
+     * Returns all of the owner details available as an array.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this->response;
+    }
 }
