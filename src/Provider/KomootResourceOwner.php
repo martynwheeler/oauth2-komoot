@@ -1,5 +1,8 @@
 <?php
+
 namespace MartynWheeler\OAuth2\Client\Provider;
+
+use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
 class KomootResourceOwner implements ResourceOwnerInterface
 {
@@ -27,7 +30,7 @@ class KomootResourceOwner implements ResourceOwnerInterface
      */
     public function getId()
     {
-        return $this->response['id'] ?: null;
+        return $this->response['username'] ?: null;
     }
 
     /**
@@ -35,9 +38,9 @@ class KomootResourceOwner implements ResourceOwnerInterface
      *
      * @return string|null
      */
-    public function getUserName()
+    public function getDisplayName()
     {
-        return $this->response['username'] ?: null;
+        return $this->response['display_name'] ?: null;
     }
 
     /**
