@@ -20,7 +20,7 @@ class Komoot extends AbstractProvider
      */
     public function getBaseAuthorizationUrl()
     {
-        return 'https://auth.komoot.de/authorize';
+        return 'https://auth.komoot.de/oauth/authorize';
     }
 
     /**
