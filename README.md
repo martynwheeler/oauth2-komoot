@@ -1,4 +1,5 @@
 Configutration:
+```
 knpu_oauth2_client:
     clients:
         # configure your clients as described here: https://github.com/knpuniversity/oauth2-client-bundle#configuration
@@ -19,9 +20,10 @@ knpu_oauth2_client:
             client_secret: '%env(KOMOOT_SECRET)%'
             redirect_route: connect_rwgps_check
             redirect_params: {}
-
+```
 
 Useage:
+```
 <?php
 
 namespace App\Controller;
@@ -81,3 +83,4 @@ class RwgpsController extends Controller
         }
     }
 }
+```
