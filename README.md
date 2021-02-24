@@ -1,4 +1,4 @@
-Configutration:
+Configuration:
 ```
 knpu_oauth2_client:
     clients:
