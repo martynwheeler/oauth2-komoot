@@ -8,8 +8,7 @@
  * file that was distributed with this source code.
  */
 
- namespace MartynWheeler\OAuth2\Client\Provider;
-//namespace KnpU\OAuth2ClientBundle\Client\Provider;
+namespace MartynWheeler\OAuth2\Client\Provider;
 
 use KnpU\OAuth2ClientBundle\Client\OAuth2Client;
 use MartynWheeler\OAuth2\Client\Provider\KomootResourceOwner;
